@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="test-page">
+    <template>
+        <style>
+        :host{
+            height:100%;
+        }
+            .test{
+                width: 100px;
+                height: 100px;
+
+                background-color: var(--primary-background-color);
+            }
+        </style>
+        <div class="test">
+
+        </div>
+    </template>
+    <script>
+        class TestPage extends Polymer.Element {
+            static get is() {
+                return 'test-page';
+            }
+        }
+
+        window.customElements.define(TestPage.is, TestPage);
+    </script>
+</dom-module>

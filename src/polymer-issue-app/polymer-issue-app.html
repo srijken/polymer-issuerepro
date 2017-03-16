@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../test-page.html">
+
+<dom-module id="polymer-issue-app">
+  <template>
+    <style>
+       :host {
+        display: block;
+        --primary-background-color: var(--paper-red-500);
+        @apply(--layout-fit);
+      }
+      
+      iron-pages {
+        @apply(--layout-vertical);
+        @apply(--layout-flex);
+        height:100%;
+      }
+    </style>
+    <p>
+        The box below should turn green
+    </p>
+    <iron-pages selected="0">
+      <test-page></test-page>
+    </iron-pages>
+  </template>
+
+  <script>
+    class MyApplication extends Polymer.Element {
+      static get is() {
+        return 'polymer-issue-app';
+      }
+      static get properties() {
+        return {};
+      }
+
+      connectedCallback () {
+        super.connectedCallback();
+        var _this = this;
+
+        window.setTimeout(function(){
+          _this.updateStyles({
+            '--primary-background-color': 'var(--paper-green-500)'
+          });
+
+        }, 500);
+      }
+    }
+
+    window.customElements.define(MyApplication.is, MyApplication);
+  </script>
+</dom-module>
